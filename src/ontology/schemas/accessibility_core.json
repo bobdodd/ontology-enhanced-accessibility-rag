@@ -1,0 +1,226 @@
+{
+  "ontology": {
+    "name": "Web Accessibility Core Ontology",
+    "version": "1.0.0",
+    "description": "Core ontology for web accessibility concepts, standards, and technologies",
+    "last_updated": "2024-07-05"
+  },
+  "concepts": {
+    "accessibility": {
+      "id": "accessibility",
+      "label": "Web Accessibility",
+      "definition": "The practice of making websites and web applications usable by people with disabilities",
+      "synonyms": ["a11y", "digital accessibility", "web inclusion"],
+      "related_terms": ["inclusive design", "universal design", "usability"],
+      "subconcepts": ["visual_accessibility", "motor_accessibility", "cognitive_accessibility", "auditory_accessibility"]
+    },
+    "visual_accessibility": {
+      "id": "visual_accessibility",
+      "label": "Visual Accessibility",
+      "definition": "Accessibility considerations for users with visual impairments",
+      "parent": "accessibility",
+      "subconcepts": ["blindness", "low_vision", "color_blindness", "photosensitivity"],
+      "technologies": ["screen_readers", "magnification", "high_contrast"],
+      "standards": ["wcag_1_1", "wcag_1_3", "wcag_1_4"]
+    },
+    "blindness": {
+      "id": "blindness",
+      "label": "Blindness",
+      "definition": "Complete or near-complete loss of vision",
+      "parent": "visual_accessibility",
+      "assistive_technologies": ["screen_readers", "braille_displays", "voice_control"],
+      "techniques": ["alt_text", "headings", "landmarks", "skip_links"],
+      "wcag_criteria": ["1.1.1", "1.3.1", "2.4.1", "2.4.3", "4.1.3"]
+    },
+    "low_vision": {
+      "id": "low_vision",
+      "label": "Low Vision",
+      "definition": "Significant visual impairment that cannot be corrected with glasses",
+      "parent": "visual_accessibility",
+      "assistive_technologies": ["magnification", "high_contrast", "large_fonts"],
+      "techniques": ["responsive_design", "zoom_support", "color_contrast"],
+      "wcag_criteria": ["1.4.3", "1.4.4", "1.4.8", "1.4.10"]
+    },
+    "color_blindness": {
+      "id": "color_blindness",
+      "label": "Color Blindness",
+      "definition": "Difficulty distinguishing certain colors",
+      "parent": "visual_accessibility",
+      "types": ["protanopia", "deuteranopia", "tritanopia"],
+      "techniques": ["color_contrast", "non_color_indicators"],
+      "wcag_criteria": ["1.4.1", "1.4.3"]
+    },
+    "motor_accessibility": {
+      "id": "motor_accessibility",
+      "label": "Motor Accessibility",
+      "definition": "Accessibility considerations for users with motor impairments",
+      "parent": "accessibility",
+      "subconcepts": ["limited_fine_motor", "tremor", "paralysis"],
+      "technologies": ["keyboard_navigation", "switch_control", "voice_control", "eye_tracking"],
+      "standards": ["wcag_2_1", "wcag_2_4"]
+    },
+    "keyboard_navigation": {
+      "id": "keyboard_navigation",
+      "label": "Keyboard Navigation",
+      "definition": "Navigation using only keyboard input",
+      "parent": "motor_accessibility",
+      "techniques": ["tab_order", "focus_indicators", "skip_links", "access_keys"],
+      "wcag_criteria": ["2.1.1", "2.1.2", "2.4.3", "2.4.7"]
+    },
+    "cognitive_accessibility": {
+      "id": "cognitive_accessibility",
+      "label": "Cognitive Accessibility",
+      "definition": "Accessibility considerations for users with cognitive impairments",
+      "parent": "accessibility",
+      "subconcepts": ["learning_disabilities", "memory_impairments", "attention_disorders"],
+      "techniques": ["clear_language", "consistent_navigation", "error_prevention"],
+      "standards": ["wcag_3_1", "wcag_3_2", "wcag_3_3"]
+    },
+    "auditory_accessibility": {
+      "id": "auditory_accessibility",
+      "label": "Auditory Accessibility",
+      "definition": "Accessibility considerations for users with hearing impairments",
+      "parent": "accessibility",
+      "subconcepts": ["deafness", "hard_of_hearing"],
+      "techniques": ["captions", "transcripts", "sign_language"],
+      "standards": ["wcag_1_2"]
+    }
+  },
+  "technologies": {
+    "screen_readers": {
+      "id": "screen_readers",
+      "label": "Screen Readers",
+      "definition": "Software that reads text and interface elements aloud",
+      "examples": ["NVDA", "JAWS", "VoiceOver", "TalkBack", "Narrator"],
+      "related_concepts": ["blindness", "low_vision"],
+      "supported_markup": ["HTML", "ARIA"],
+      "testing_considerations": ["announcement_order", "landmark_navigation", "form_labels"]
+    },
+    "html": {
+      "id": "html",
+      "label": "HTML",
+      "definition": "HyperText Markup Language - the standard markup language for web pages",
+      "accessibility_features": ["semantic_elements", "alt_attributes", "form_labels", "headings"],
+      "best_practices": ["semantic_markup", "proper_nesting", "valid_markup"],
+      "related_standards": ["WCAG", "HTML5", "ARIA"]
+    },
+    "aria": {
+      "id": "aria",
+      "label": "ARIA",
+      "definition": "Accessible Rich Internet Applications - specification for accessibility semantics",
+      "full_name": "WAI-ARIA",
+      "components": ["roles", "properties", "states"],
+      "use_cases": ["dynamic_content", "custom_widgets", "single_page_applications"],
+      "best_practices": ["prefer_semantic_html", "test_with_screen_readers", "avoid_aria_abuse"]
+    },
+    "css": {
+      "id": "css",
+      "label": "CSS",
+      "definition": "Cascading Style Sheets - language for styling web pages",
+      "accessibility_features": ["focus_indicators", "responsive_design", "high_contrast"],
+      "considerations": ["color_contrast", "text_scaling", "reduced_motion"],
+      "wcag_related": ["1.4.3", "1.4.4", "2.3.3"]
+    }
+  },
+  "standards": {
+    "wcag": {
+      "id": "wcag",
+      "label": "WCAG",
+      "full_name": "Web Content Accessibility Guidelines",
+      "versions": ["2.0", "2.1", "2.2", "3.0"],
+      "principles": ["perceivable", "operable", "understandable", "robust"],
+      "levels": ["A", "AA", "AAA"],
+      "organization": "W3C"
+    },
+    "section_508": {
+      "id": "section_508",
+      "label": "Section 508",
+      "definition": "US federal law requiring accessibility of electronic and information technology",
+      "scope": "US government agencies",
+      "relationship_to_wcag": "References WCAG 2.0 Level AA",
+      "enforcement": "GSA"
+    },
+    "en_301_549": {
+      "id": "en_301_549",
+      "label": "EN 301 549",
+      "definition": "European accessibility standard for ICT products and services",
+      "scope": "European public sector",
+      "relationship_to_wcag": "Incorporates WCAG 2.1 Level AA",
+      "organization": "ETSI"
+    },
+    "ada": {
+      "id": "ada",
+      "label": "ADA",
+      "full_name": "Americans with Disabilities Act",
+      "definition": "US civil rights law prohibiting discrimination based on disability",
+      "web_accessibility": "Courts often reference WCAG for web accessibility",
+      "enforcement": "DOJ"
+    }
+  },
+  "testing_methods": {
+    "automated_testing": {
+      "id": "automated_testing",
+      "label": "Automated Testing",
+      "definition": "Using software tools to automatically detect accessibility issues",
+      "tools": ["axe", "WAVE", "Lighthouse", "Pa11y"],
+      "limitations": ["cannot_detect_all_issues", "context_dependent", "semantic_meaning"],
+      "coverage": "Approximately 30-40% of WCAG issues"
+    },
+    "manual_testing": {
+      "id": "manual_testing",
+      "label": "Manual Testing",
+      "definition": "Human evaluation of accessibility features and issues",
+      "methods": ["keyboard_navigation", "screen_reader_testing", "color_contrast"],
+      "required_for": ["logical_flow", "meaningful_content", "usability"],
+      "expertise_needed": "Accessibility knowledge and testing skills"
+    },
+    "user_testing": {
+      "id": "user_testing",
+      "label": "User Testing",
+      "definition": "Testing with actual users who have disabilities",
+      "benefits": ["real_world_validation", "usability_insights", "user_experience"],
+      "considerations": ["recruitment", "compensation", "accessible_testing_environment"],
+      "best_practices": ["inclusive_research", "respectful_engagement", "actionable_feedback"]
+    }
+  },
+  "relationships": {
+    "implements": [
+      {"source": "aria", "target": "accessibility", "relationship": "implements"},
+      {"source": "html", "target": "accessibility", "relationship": "supports"},
+      {"source": "css", "target": "accessibility", "relationship": "enables"}
+    ],
+    "requires": [
+      {"source": "screen_readers", "target": "semantic_markup", "relationship": "requires"},
+      {"source": "keyboard_navigation", "target": "focusable_elements", "relationship": "requires"},
+      {"source": "color_contrast", "target": "sufficient_ratio", "relationship": "requires"}
+    ],
+    "addresses": [
+      {"source": "alt_text", "target": "blindness", "relationship": "addresses"},
+      {"source": "captions", "target": "deafness", "relationship": "addresses"},
+      {"source": "keyboard_navigation", "target": "motor_accessibility", "relationship": "addresses"}
+    ],
+    "tested_by": [
+      {"source": "screen_reader_compatibility", "target": "manual_testing", "relationship": "tested_by"},
+      {"source": "color_contrast", "target": "automated_testing", "relationship": "tested_by"},
+      {"source": "usability", "target": "user_testing", "relationship": "tested_by"}
+    ]
+  },
+  "query_expansion_rules": {
+    "synonyms": {
+      "accessibility": ["a11y", "digital accessibility", "web inclusion"],
+      "screen_reader": ["assistive technology", "AT", "voice output"],
+      "keyboard_navigation": ["keyboard access", "tab navigation", "keyboard only"],
+      "color_contrast": ["color accessibility", "contrast ratio", "luminance contrast"]
+    },
+    "hyponyms": {
+      "accessibility": ["visual_accessibility", "motor_accessibility", "cognitive_accessibility", "auditory_accessibility"],
+      "visual_accessibility": ["blindness", "low_vision", "color_blindness"],
+      "assistive_technology": ["screen_readers", "magnification", "voice_control"]
+    },
+    "related_terms": {
+      "WCAG": ["Web Content Accessibility Guidelines", "W3C", "success criteria", "conformance"],
+      "ARIA": ["WAI-ARIA", "roles", "properties", "states", "landmarks"],
+      "testing": ["automated_testing", "manual_testing", "user_testing", "evaluation"]
+    }
+  }
+}
